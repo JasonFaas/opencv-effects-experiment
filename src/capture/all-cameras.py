@@ -2,9 +2,11 @@ import cv2
 import numpy as np
 import datetime
 
+
 camera_list = [1, 2]
 window_name = "Camera_%s" % str(0)
 cv2.namedWindow(window_name)
+#TODO: Initialize cameras with empty so everything can be done in loop
 cameras = [[cv2.VideoCapture(0), window_name]]
 
 #initialize cameras
@@ -34,6 +36,7 @@ while display_video:
             display_video = False
             break
         elif k%256 == ord('s'):
+            #TODO: Either add functionality for frame specific frame saving or save all 3
             print("saving image")
             datetime_now = str(datetime.datetime.now()).replace(' ', '_')
             img_name = "{}-{}.png".format(str(cam_int[1]), datetime_now)
