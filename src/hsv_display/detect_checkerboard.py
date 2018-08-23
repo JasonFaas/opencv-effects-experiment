@@ -25,9 +25,9 @@ while True:
     hsv_frame = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
     # define range of blue color in HSV
     lower_black_checkerboard = np.array([0, 0, 0])
-    upper_black_checkerboard = np.array([180, 40, int(255 * 0.3)])
-    lower_white_checkerboard = np.array([0, 0, int(255 * 0.3)])
-    upper_white_checkerboard = np.array([180, 40, 255])
+    upper_black_checkerboard = np.array([180, int(255 * input_percent), int(255 * input_percent)])
+    lower_white_checkerboard = np.array([0, 0, int(255 * 0.75)])
+    upper_white_checkerboard = np.array([180, 25, 255])
     # Threshold the HSV image to get only blacks and white
     black_mask = cv.inRange(hsv_frame, lower_black_checkerboard, upper_black_checkerboard)
     white_mask = cv.inRange(hsv_frame, lower_white_checkerboard, upper_white_checkerboard)
