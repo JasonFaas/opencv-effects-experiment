@@ -1,8 +1,9 @@
 import cv2
 import numpy as np
+import datetime
 
 camera_list = [1, 2]
-window_name = "Camera %s" % str(0)
+window_name = "Camera_%s" % str(0)
 cv2.namedWindow(window_name)
 cameras = [[cv2.VideoCapture(0), window_name]]
 
@@ -34,9 +35,11 @@ while display_video:
             break
         elif k%256 == ord('s'):
             print("saving image")
-            img_name_0 = "opencv_frame_{}_0.png".format(img_counter)
-            cv2.imwrite(img_name_0, frame)
-            print("{} written!".format(img_name_0))
+            datetime_now = str(datetime.datetime.now()).replace(' ', '_')
+            img_name = "{}-{}.png".format(str(cam_int[1]), datetime_now)
+
+            cv2.imwrite(img_name, frame)
+            print("{} written!".format(img_name))
             # img_counter += 1
 
 for cam_int in cameras:
